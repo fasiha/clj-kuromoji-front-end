@@ -1,36 +1,84 @@
-# clojure-kuromoji
+# Use [Kuromoji](https://github.com/atilika/kuromoji) and UniDic from JVM Clojure
 
-FIXME: description
+## Install
+Follow instructions for lein at http://leiningen.org/#install.
 
-## Installation
+## Create
+```
+$ lein new app clojure-kuromoji
+$ cd clojure-kuromoji
+```
 
-Download from http://example.com/FIXME.
+## Replace
+Replace `project.clj` and `src/clojure_kuromoji/core.clj` with the two files in this gist.
 
-## Usage
+## Get dependencies
+```
+$ lein deps
+```
+This downloads a bunch of stuff.
 
-FIXME: explanation
+## Run
+```
+$ lein run
+```
+Here’s a snippet of the resulting EDN printout:
+```clojure
+({:all-features
+  ["接頭辞"
+   "*"
+   "*"
+   "*"
+   "*"
+   "*"
+   "オ"
+   "御"
+   "お"
+   "オ"
+   "お"
+   "オ"
+   "和"
+   "*"
+   "*"
+   "促添"
+   "基本形"],
+  :conjugation [:uninflected],
+  :conjugation-type [],
+  :final-sound-alternation-form "基本形",
+  :final-sound-alternation-type "促添",
+  :initial-sound-alternation-form "*",
+  :initial-sound-alternation-type "*",
+  :known? true,
+  :language-type "和",
+  :lemma "御",
+  :lemma-pronunciation "オ",
+  :lemma-reading "オ",
+  :literal "お",
+  :literal-pronunciation "オ",
+  :part-of-speech [:prefix],
+  :position 0,
+  :user? false,
+  :written-base-form "お",
+  :written-form "お"}
+; ... snip ✂ ...
+)
+```
+This is Kuromoji’s tokenization of 「お寿司が食べたい。」 using UniDic.
 
-    $ java -jar clojure-kuromoji-0.1.0-standalone.jar [args]
+(For full output, see [`full-output.edn`](https://gist.github.com/fasiha/d1e521c84b093e9756455d82f6482a38#file-full-output-edn).)
 
-## Options
+## Abbreviated tokenization
+Here’s a subset of the above tokenized data for easier digestion. Again, it’s Kuromoji/UniDic’s tokenization of 「お寿司が食べたい。」.
 
-FIXME: listing of options this app accepts.
+| literal   | lemma    | part of speech                    | conjugation                | conjugation type                       |
+|---|---|---|---|---|
+| お        | 御       | [:prefix]                         | [:uninflected]             | []                                     |
+| 寿司      | 寿司     | [:noun :common :general]          | [:uninflected]             | []                                     |
+| が        | が       | [:particle :case]                 | [:uninflected]             | []                                     |
+| 食べ      | 食べる   | [:verb :general]                  | [:continuative :general]   | [:shimoichidan-verb-e-row :ba-column]  |
+| たい      | たい     | [:auxiliary-verb]                 | [:conclusive :general]     | [:auxiliary :tai]                      |
+| 。        | 。       | [:supplementary-symbol :period]   | [:uninflected]             | []                                     |
 
-## Examples
+## P.S. IPADIC
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+In principle you can replace UniDic with IPADIC but that dictionary gives a *different* API for `Token` from UniDic’s, so adjust `core.clj` accordingly.
