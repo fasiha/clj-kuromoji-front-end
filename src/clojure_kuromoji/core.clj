@@ -224,12 +224,24 @@
    :all-features (string/split (.getAllFeatures token) #",")
    })
 
-(def s "お寿司が食べたい。")
+(defn token-to-smap [token]
+  (into (sorted-map) (token-to-map token)))
 
 (defn -main
   [& args]
-  (let [t (Tokenizer.)
+  (let [s "何できた？"
         ; all-results is a list of maps
-        all-results (map token-to-map (.tokenize t s))]
-    ; fancy pretty-printing. Use sorted-map for alphabetized keys.
-    (pprint (map #(into (sorted-map) %) all-results))))
+        all-results (map token-to-smap (.tokenize (Tokenizer.) s))
+        ; top N results
+        nbest (.multiTokenizeNBest (Tokenizer.) s 6)
+        ]
+    (println "SINGLE RESULT USING .tokenize")
+    (pprint all-results)
+    (println "TOP-N BEST RESULTS USING .multiTokenizeNBest")
+    (pprint (map (fn [v] (map #(-> %
+                                   token-to-smap
+                                   (select-keys [:literal :lemma]))
+                              v))
+                 nbest))
+    ))
+
