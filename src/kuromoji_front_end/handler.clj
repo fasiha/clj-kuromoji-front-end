@@ -4,6 +4,7 @@
             [compojure.route :as route]
             [ring.util.response :refer [file-response]]
             [ring.middleware.format :refer [wrap-restful-format]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [kuromoji-front-end.kuromoji :as kuromoji]))
 
 (defroutes handler
@@ -21,4 +22,6 @@
   )
 
 (def app (-> #'handler
+             (wrap-cors :access-control-allow-origin [#".*"]
+                        :access-control-allow-methods [:get])
              (wrap-restful-format)))

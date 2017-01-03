@@ -13,6 +13,7 @@
                  [cheshire "5.5.0"]
                  [clj-time "0.12.0"]
                  [clj-http "2.2.0"]
+                 [ring-cors "0.1.8"]
                  ]
   :plugins [[lein-ring "0.10.0"]
             [lein-expand-resource-paths "0.0.1"]]
