@@ -18,7 +18,7 @@
             [lein-expand-resource-paths "0.0.1"]]
   :ring {:handler kuromoji-front-end.handler/app
          :port 3600}
-  :resource-paths ["resources/jars-1fad6cc5e27/*"]
+  :resource-paths ["resources/jars-cc64f5fdda8/*"]
   :main ^:skip-aot kuromoji-front-end.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

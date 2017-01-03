@@ -118,10 +118,10 @@ Note that the Japanese feature names have been replaced by the English translati
 - [inflection features](https://gist.github.com/masayu-a/3e11168f9330e2d83a68)
 - [inflection type features](https://gist.github.com/masayu-a/b3ce862336e47736e84f)
 
-An awesome feature of Kuromoji 1.0 is N-best tokenizations. This is made available at the `/parse-nbest/` endpoint (i.e., `http://localhost:3600/parse-nbest/何できた？`), and returns the top ten results.
+An awesome feature of Kuromoji 1.0 is N-best tokenizations. This is made available at the `/parse-nbest/` endpoint (i.e., `http://localhost:3600/parse-nbest/何できた？`), and returns the top ten results as an array/vector.
 
 ## Abbreviated tokenization
-Here’s a subset of the above tokenized data for easier digestion. Again, it’s Kuromoji/UniDic’s tokenization of 「お寿司が食べたい。」.
+Here’s a subset of the tokenized data for easier digestion, of Kuromoji/UniDic’s tokenization of 「お寿司が食べたい。」.
 
 | literal   | lemma    | part of speech                    | conjugation                | conjugation type                       |
 |---|---|---|---|---|
@@ -133,7 +133,9 @@ Here’s a subset of the above tokenized data for easier digestion. Again, it’
 | 。        | 。       | [:supplementary-symbol :period]   | [:uninflected]             | []                                     |
 
 ## Notes on building Kuromoji 1.0-SNAPSHOT
-The JARs included in this repo may be outdated. Here are my notes on building Kuromoji from source.
+The JARs included in this repo may be outdated—I am using `cc64f5fdda8` (Nov 16, 2016), and you can check the latest log at [Atilika Kuromoji log](https://github.com/atilika/kuromoji/commits/master).
+
+Here are my notes on building Kuromoji from source.
 
 First, install [Maven](http://maven.apache.org/install.html) (or just `$ brew install maven` on macOS). Then:
 ```
@@ -144,4 +146,4 @@ $ mvn package -DskipDownloadWikipedia -pl kuromoji-unidic -am
 $ mkdir /PATH/TO/CLOJURE/PROJECT/resources/jars
 $ cp -p `find -name "*.jar"` /PATH/TO/CLOJURE/PROJECT/resources/jars/
 ```
-I appended the HEAD commit to the name of the `jars` directory, so the JARs go to `resources/jars-1fad6cc5e27`. See http://stackoverflow.com/q/2404426/500207 for alternatives.
+I appended the HEAD commit to the name of the `jars` directory, so the JARs go to `resources/jars-cc64f5fdda8`. See http://stackoverflow.com/q/2404426/500207 for alternatives.
