@@ -1,4 +1,4 @@
-(ns clojure-kuromoji.core
+(ns kuromoji-front-end.core
   (:require [clojure.string :as string]
             [clojure.pprint :refer [pprint]])
   (:import [com.atilika.kuromoji.unidic Token Tokenizer])
@@ -244,4 +244,3 @@
                               v))
                  nbest))
     ))
-

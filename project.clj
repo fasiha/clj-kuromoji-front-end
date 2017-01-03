@@ -1,14 +1,24 @@
-(defproject clojure-kuromoji "0.1.0-SNAPSHOT"
+(defproject kuromoji-front-end "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :plugins [[lein-expand-resource-paths "0.0.1"]]
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 ; [com.atilika.kuromoji/kuromoji-ipadic "0.9.0"]
-                 ; [com.atilika.kuromoji/kuromoji-unidic "0.9.0"]
+                 [compojure "1.4.0"]
+                 [ring "1.4.0"]
+                 [com.cognitect/transit-clj "0.8.288"]
+                 [ring/ring-defaults "0.2.0"]
+                 [ring-middleware-format "0.7.0"]
+                 [ring/ring-mock "0.3.0"]
+                 [cheshire "5.5.0"]
+                 [clj-time "0.12.0"]
+                 [clj-http "2.2.0"]
                  ]
+  :plugins [[lein-ring "0.10.0"]
+            [lein-expand-resource-paths "0.0.1"]]
+  :ring {:handler kuromoji-front-end.handler/app
+         :port 3600}
   :resource-paths ["resources/jars-1fad6cc5e27/*"]
-  :main ^:skip-aot clojure-kuromoji.core
+  :main ^:skip-aot kuromoji-front-end.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
