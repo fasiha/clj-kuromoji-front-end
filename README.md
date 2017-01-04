@@ -5,7 +5,10 @@ This repo builds on the Kuromoji 1.0 branch of my [`demo-clojure-kuromoji`](http
 ## Install
 Follow instructions for lein at http://leiningen.org/#install.
 
-## Run
+A simple demo is available: clone this repo, `cd` into it, and run `lein run` to see the best and the top-3 tokenizations of “何できた？”. Read `src/kuromoji_front_end/core.clj` to see how straightforward the API is.
+
+## Run microservice
+Clone this repo, `cd` into it, then:
 ```
 $ lein trampoline ring server-headless
 ```
