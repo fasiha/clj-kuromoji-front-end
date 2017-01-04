@@ -150,3 +150,8 @@ $ mkdir /PATH/TO/CLOJURE/PROJECT/resources/jars
 $ cp -p `find -name "*.jar"` /PATH/TO/CLOJURE/PROJECT/resources/jars/
 ```
 I appended the HEAD commit to the name of the `jars` directory, so the JARs go to `resources/jars-cc64f5fdda8`. See http://stackoverflow.com/q/2404426/500207 for alternatives.
+
+## License
+Atilika has kindly [released Kuromoji](https://github.com/atilika/kuromoji/#license) under the liberal Apache License.
+
+All source code in *this* repo (e.g., everything in `src/`) is released under into the public domain, under the [Unlicense](http://unlicense.org/).
