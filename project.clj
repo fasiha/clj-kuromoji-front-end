@@ -1,8 +1,8 @@
 (defproject kuromoji-front-end "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :description "Make Kuromoji a Clojure microservice. Japanese morphological analysis and part-of-speech tagging for everyone!"
+  :url "https://github.com/fasiha/clj-kuromoji-front-end"
+  :license {:name "Unlicense"
+            :url "http://unlicense.org/"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [compojure "1.4.0"]
                  [ring "1.4.0"]
